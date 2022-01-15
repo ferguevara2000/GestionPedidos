@@ -4,7 +4,7 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-with, Content-type, Ac
 header("Content-Type: application/json");
 header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
 
-include 'conexion.php';
+include '../conexion.php';
 
 $sql = "SELECT * FROM plantas";
 $resp = $conn->query($sql);

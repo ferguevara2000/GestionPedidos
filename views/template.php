@@ -18,6 +18,7 @@
                 <li class="nav__li"><i class="fas fa-tags"></i><a href="index.php?action=articulos">Articulos</a></li>
                 <li class="nav__li"><i class="fas fa-store-alt"></i><a href="index.php?action=sucursales">Sucursales</a></li>
                 <li class="nav__li"><i class="fas fa-industry"></i><a href="index.php?action=plantas">Plantas</a></li>
+                <li class="nav__li"><i class="fas fa-file-invoice"></i><a href="index.php?action=plantas">Reportes</a></li>
             </ul>
         </nav>
     </header>

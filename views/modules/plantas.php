@@ -24,7 +24,7 @@
                 <th field="id_pla" width="50">Id Planta</th>
                 <th field="nom_pla" width="50">Nombre</th>
                 <th field="dir_pla" width="50">Direccion</th>
-                <th field="tel_pla" width="50">Telèfono</th>
+                <th field="tel_pla" width="50">Teléfono</th>
             </tr>
             </thead>
         </table>
