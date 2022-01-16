@@ -62,7 +62,7 @@
         <br>
         <div style="margin-bottom:10px">
             <label>Planta Fabricación:</label>
-            <select name="pla_fab">
+            <select name="pla_fab" style="padding:5px; width:175px; border-color: #64A0F9">
                 <option value="0">Seleccione..</option>
                 <?php
                     include "../gestionPedidos/models/conexion.php";
