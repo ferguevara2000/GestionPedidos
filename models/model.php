@@ -5,7 +5,7 @@ class EnlacesPagina
     public static function enlacesPaginasModel($enlacesModel)
     {
         if ($enlacesModel == "pedidos" || $enlacesModel == "clientes" || $enlacesModel == "sucursales" ||
-            $enlacesModel == "articulos" || $enlacesModel == "plantas")
+            $enlacesModel == "articulos" || $enlacesModel == "plantas" || $enlacesModel == "reportes")
         {
             $module = "views/modules/".$enlacesModel.".php";
         }else if ($enlacesModel == "index"){
