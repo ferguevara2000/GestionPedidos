@@ -14,7 +14,7 @@
     <h2 style="padding: 20px">Ingresar un pedido</h2>
     <br>
     <div class="panel datagrid panel-htop" style="width: 700px; margin: 0 auto">
-        <table id="dg" title="Clientes" class="easyui-datagrid" style="width:700px;height: 250px"
+        <table id="dg" title="Cabezera del Pedido" class="easyui-datagrid" style="width:700px;height: 250px"
                url="../gestionpedidos/models/pedidos/mostrarCabezeraPedidos.php"
                toolbar="#toolbar" pagination="true"
                rownumbers="true" fitColumns="true" singleSelect="true">
@@ -47,14 +47,28 @@
         </div>
         <div style="margin-bottom:10px">
             <label>Sucursal:</label>
-            <select name="id_suc" style="margin-left: 20px; padding:5px; width:175px; border-color: #64A0F9">
-                <option value="0">Seleccione..</option>
+            <select name="ped_suc_per" style="margin-left: 20px; padding:5px; width:175px; border-color: #64A0F9">
                 <?php
                 include "../gestionPedidos/models/conexion.php";
                 $sql = "SELECT * FROM sucursales";
                 $result = mysqli_query($conn,$sql);
                 while ($row = mysqli_fetch_array($result)) {
-                    echo '<option value="'.$row['dir_suc'].' - '.$row['ciu_suc'].'">'.$row['dir_suc'].' - '.$row['ciu_suc'].'</option>';
+                    echo '<option value="'.$row['id_suc'].'">'.$row['id_suc'].'</option>';
+                }
+                $conn->close();
+                ?>
+            </select>
+            <br>
+        </div>
+        <div style="margin-bottom:10px">
+            <label>Clientes:</label>
+            <select name="id_cli" style="margin-left: 20px; padding:5px; width:175px; border-color: #64A0F9">
+                <?php
+                include "../gestionPedidos/models/conexion.php";
+                $sql = "SELECT * FROM clientes";
+                $result = mysqli_query($conn,$sql);
+                while ($row = mysqli_fetch_array($result)) {
+                    echo '<option value="'.$row['id_cli'].'">'.$row['id_cli'].'</option>';
                 }
                 $conn->close();
                 ?>
@@ -100,7 +114,19 @@
     <form id="fm1" method="post" novalidate style="margin:0;padding:20px 50px">
         <h3 style="padding-bottom: 20px; padding-top: 0">Detalle del Pedido</h3>
         <div style="margin-bottom:10px">
-            <input name="id_ped_per" class="easyui-textbox" required="true" label="Id Pedido:" style="width:100%">
+            <label>Id Pedido:</label>
+            <select name="id_ped_per" style="margin-left: 20px; padding:5px; width:175px; border-color: #64A0F9">
+                <?php
+                include "../gestionPedidos/models/conexion.php";
+                $sql = "SELECT * FROM pedidos";
+                $result = mysqli_query($conn,$sql);
+                while ($row = mysqli_fetch_array($result)) {
+                    echo '<option value="'.$row['id_ped'].'">'.$row['id_ped'].'</option>';
+                }
+                $conn->close();
+                ?>
+            </select>
+            <br>
         </div>
         <div style="margin-bottom:10px">
             <input name="cat_ped" class="easyui-textbox" type="number" required="true" label="Cantidad:" style="width:100%">

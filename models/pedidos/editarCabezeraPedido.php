@@ -10,7 +10,13 @@ $Id = $_POST['id_ped'];
 $Fecha = $_POST['fec_ped'];
 $Sucursal = $_POST['ped_suc_per'];
 
-$sqlInsert = "UPDATE pedidos SET fec_ped = '$Fecha', ped_suc_per = '$Sucursal'WHERE id_ped = '$Id'";
+$sqlGetIdPlanta = "SELECT id_suc FROM sucursales WHERE id_suc='$Sucursal'";
+$resp = mysqli_query($conn,$sqlGetIdPlanta);
+while ($row = mysqli_fetch_array($resp)) {
+    $idSuc = $row[0];
+}
+
+$sqlInsert = "UPDATE pedidos SET fec_ped = '$Fecha', ped_suc_per = '$idSuc'WHERE id_ped = '$Id'";
 
 if ($mysqli->query($sqlInsert) === TRUE)
 {
