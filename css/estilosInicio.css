@@ -33,6 +33,10 @@
     margin-right: 5px;
 }
 
+section{
+    height: calc(100vh - 12px - 40px);
+}
+
 footer {
     background-color: #063C8C;
     position: absolute;
