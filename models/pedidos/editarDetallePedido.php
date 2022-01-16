@@ -10,7 +10,13 @@ $Id = $_POST['id_ped_per'];
 $Cantidad = $_POST['cat_ped'];
 $Articulo = $_POST['id_art'];
 
-$sqlInsert = "UPDATE detalle_ped SET cat_ped = '$Cantidad', id_art = '$Articulo' WHERE id_ped_per = '$Id'";
+$sqlGetIdPlanta = "SELECT id_art FROM articulos WHERE nom_art='$Articulo'";
+$resp = mysqli_query($conn,$sqlGetIdPlanta);
+while ($row = mysqli_fetch_array($resp)) {
+    $idArt = $row[0];
+}
+
+$sqlInsert = "UPDATE detalle_ped SET cat_ped = '$Cantidad', id_art = '$idArt' WHERE id_ped_per = '$Id' AND id_art = $idArt";
 
 if ($mysqli->query($sqlInsert) === TRUE)
 {
