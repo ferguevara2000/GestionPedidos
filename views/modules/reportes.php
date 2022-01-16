@@ -12,27 +12,29 @@
 <div style="margin:40px">
 <h2 style="padding: 20px, border-top=1px">Buscar Reportes por Cedula de Cliente</h2>
 <br>
-<input name="ced_cli" class="easyui-textbox" required="true" label="Cedula:" style="width:20%">
-<a href="javascript:void(0)" class="easyui-linkbutton" onclick="buscar()" style="width:60px">Buscar</a>
+<input class="easyui-textbox" class="light-table-filter" required="true" label="Cedula:" style="width:20%" data-table="order-table">
+<a href="" class="easyui-linkbutton" style="width:60px">Buscar</a>
 </div>
 <div style="margin:40px">
-<table id="dg" title="Reportes" class="easyui-datagrid" style="width:700px;height:200px"
-       url="" toolbar="#toolbar" pagination="true"
+<table title="Reportes por Cliente" class="easyui-datagrid" class="order-table table" style="width:700px;height:500px"
+       url="../gestionPedidos/models/reportes/cargarReportes.php" toolbar="#toolbar" pagination="true"
        rownumbers="true" fitColumns="true" singleSelect="true">
     <thead>
     <tr>
-        <th field="id_art" width="1">Orden Num.</th>
-        <th field="nom_art" width="1">Fecha</th>
-        <th field="nom_art" width="1">Dir. Sucursal</th>
+        <th field="id_cli" width="50">Cedula</th>
+        <th field="nom_cli" width="50">Nombre</th>
+        <th field="id_ped_per" width="50">Orden Num.</th>
+        <th field="fec_ped" width="50">Fecha</th>
+        <th field="dir_suc" width="50">Dir. Sucursal</th>
     </tr>
     </thead>
 </table>
 </div> 
 </div>
 <div id="toolbar">
-    <a href="javascript:void(0)" class="easyui-linkbutton" plain="true" onclick="">Ver Reporte</a>
+    <a href="" class="easyui-linkbutton" plain="true" onclick="">Ver Reporte</a>
 </div>
-<div style="margin:40px">
+<!--<div style="margin:40px">
 <table id="dg" title="Reporte de Pedido" class="easyui-datagrid" style="width:650px;height:105px"
        url="" fitColumns="true" singleSelect="true">
     <thead>
@@ -52,16 +54,7 @@
     </tr>
     </thead>
 </table>
-</div>
-<script type="text/javascript">
-    function buscar(){
-        var row = $('#dg').datagrid('getSelected');
-        if (row){
-            $('#dlg').dialog('open').dialog('center').dialog('setTitle','Editar Estudiante');
-            $('#fm').form('load',row);
-            url = '../gestionPedidos/models/articulos/editarArticulo.php?id_art=' + row.id_art;
-        }
-    }
+</div>-->>
 </script>
 </body>
 </html>

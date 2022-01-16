@@ -20,11 +20,11 @@ while ($row = mysqli_fetch_array($resp)) {
     $idPla = $row[0];
 }
 
-$sqlArt = "INSERT INTO articulos VALUES('$idArt','$nomArt','$colArt','$pesArt','$capArt')";
+$sqlArt = "INSERT INTO articulos VALUES('$idArt','$nomArt','$pesArt')";
 
-$sqlDetArt = "INSERT INTO art_planta VALUES('$idArt','$idPla','$capArt','$nivRie')";
+$sqlDetArt = "INSERT INTO art_planta VALUES('$idArt','$idPla','$capArt','$nivRie','$colArt')";
 
-if ($conn->query($sqlArt) === TRUE || $conn->query($sqlDetArt) === TRUE) {
+if ($conn->query($sqlArt) === TRUE && $conn->query($sqlDetArt) === TRUE) {
     echo json_encode("Se guardo correctamente");
 }else{
     echo json_encode("Error".$sqlInsert.$mysqli->error);
