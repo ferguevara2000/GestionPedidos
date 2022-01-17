@@ -6,19 +6,19 @@ header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
 
 include '../conexion.php';
 
-$sqlJoin = "SELECT C.id_cli, C.nom_cli, DP.id_ped_per, P.fec_ped, S.dir_suc
-        FROM detalle_ped DP, pedidos P, sucursales S, clientes C 
-        WHERE S.cli_suc_per = c.id_cli AND S.id_suc=P.ped_suc_per
-        AND P.id_ped=DP.id_ped_per";
+$sqlJoin = "SELECT CS.id_cli_per, C.nom_cli, DP.id_ped_per, P.fec_ped, S.dir_suc
+            FROM detalle_ped DP, pedidos P, sucursales S, clientes C, cliente_suc CS
+            WHERE S.id_suc=CS.id_suc_per AND CS.id_cli_per=C.id_cli AND S.id_suc=P.ped_suc_per
+            AND P.id_ped=DP.id_ped_per";
 
 $resp = $conn->query($sqlJoin);
 $result = array();
 if ($resp->num_rows > 0) {
-    while ($row = $resp->fetch_assoc()) {
-        array_push($result, $row);
+while ($row = $resp->fetch_assoc()) {
+    array_push($result, $row);
     }
 } else {
-    $result = "No hay Reportes";
+     $result = "No hay Reportes";
 }
 echo json_encode($result);
 

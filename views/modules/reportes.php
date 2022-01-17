@@ -12,16 +12,23 @@
 <div style="margin:40px">
 <h2 style="padding: 20px, border-top=1px">Buscar Reportes por Cedula de Cliente</h2>
 <br>
-<input class="easyui-textbox" class="light-table-filter" required="true" label="Cedula:" style="width:20%" data-table="order-table">
-<a href="" class="easyui-linkbutton" style="width:60px">Buscar</a>
+<div id="dlg" class="easyui-dialog" style="width:400px" data-options="closed:true,modal:true,border:'thin',buttons:'#dlg-buttons'">
+<form id="fm" method="post" novalidate style="margin:0;padding:20px 50px">
+<div style="margin-bottom:10px">    
+    <input name="cedula" class="easyui-textbox" required="true" label="Cedula:" style="width:100%">
 </div>
-<div style="margin:40px">
-<table title="Reportes por Cliente" class="easyui-datagrid" class="order-table table" style="width:700px;height:500px"
+</form>
+</div>
+<div id="dlg-buttons">
+<a href="javascript:void(0)" class="easyui-linkbutton c6" onclick="confirmar()" style="width:90px;">Confirmar</a>
+</div>
+<br>
+<table title="Reportes por Cliente" class="easyui-datagrid" style="width:700px;height:500px"
        url="../gestionPedidos/models/reportes/cargarReportes.php" toolbar="#toolbar" pagination="true"
        rownumbers="true" fitColumns="true" singleSelect="true">
     <thead>
     <tr>
-        <th field="id_cli" width="50">Cedula</th>
+        <th field="id_cli_per" width="50">Cedula</th>
         <th field="nom_cli" width="50">Nombre</th>
         <th field="id_ped_per" width="50">Orden Num.</th>
         <th field="fec_ped" width="50">Fecha</th>
@@ -29,10 +36,9 @@
     </tr>
     </thead>
 </table>
-</div> 
 </div>
 <div id="toolbar">
-    <a href="" class="easyui-linkbutton" plain="true" onclick="">Ver Reporte</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" plain="true" onclick="buscar()">Buscar</a>
 </div>
 <!--<div style="margin:40px">
 <table id="dg" title="Reporte de Pedido" class="easyui-datagrid" style="width:650px;height:105px"
@@ -54,7 +60,36 @@
     </tr>
     </thead>
 </table>
-</div>-->>
+</div>-->
+<script type="text/javascript">
+    var url;
+    function buscar(){
+        $('#dlg').dialog('open').dialog('center').dialog('setTitle','Buscar');
+        $('#fm').form('clear');
+        url = '../gestionPedidos/models/reportes/buscarReportes.php';
+    }
+
+    function confirmar() {
+        $('#fm').form('submit', {
+            url: url,
+            iframe: false,
+            onSubmit: function () {
+                return $(this).form('validate');
+            },
+            success: function (result) {
+                var result = eval('(' + result + ')');
+                if (result.errorMsg) {
+                    $.messager.show({
+                        title: 'Error',
+                        msg: result.errorMsg
+                    });
+                } else {
+                    $('#dlg').dialog('close');        // close the dialog
+                    $('#dg').datagrid('reload');    // reload the user data
+                }
+            }
+        });
+    }
 </script>
 </body>
 </html>
