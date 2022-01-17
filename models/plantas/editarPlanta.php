@@ -11,7 +11,7 @@ $NombreP = $_POST['nom_pla'];
 $DireccionP = $_POST['dir_pla'];
 $TelefonoP = $_POST['tel_pla'];
 
-$sqlInsert = "UPDATE plamtas SET nom_pla = '$NombreP', dir_pla = '$DireccionP', tel_pla = '$TelefonoP'  WHERE id_pla = '$IdPlanta'";
+$sqlInsert = "UPDATE plantas SET nom_pla = '$NombreP', dir_pla = '$DireccionP', tel_pla = '$TelefonoP'  WHERE id_pla = '$IdPlanta'";
 
 if ($mysqli->query($sqlInsert) === TRUE)
 {

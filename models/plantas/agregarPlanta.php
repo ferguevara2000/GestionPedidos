@@ -13,13 +13,13 @@ $TelefonoP = $_POST['tel_pla'];
 
 $sqlInsert = "INSERT INTO plantas VALUES('$IdPlanta','$NombreP','$DireccionP','$TelefonoP')";
 
-if ($mysqli->query($sqlInsert) === TRUE)
+if ($conn->query($sqlInsert) === TRUE)
 {
     echo json_encode("Se guardo correctamente");
 }else{
     echo json_encode("Error".$sqlInsert.$mysqli->error);
 }
 
-$mysqli->close();
+$conn->close();
 
 ?>

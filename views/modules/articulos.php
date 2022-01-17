@@ -129,14 +129,11 @@
         if (row){
             $.messager.confirm('Confirmar','Esta seguro que desea eliminar el articulo?',function(r){
                 if (r){
-                    $.post('../gestionPedidos/models/articulos/eliminarArticulo.php',{id_art:row.id_art,nom_pla:row.nom_pla},function(result){
+                    $.post('../gestionPedidos/models/articulos/eliminarArticulo.php',{id_art:row.id_art},function(result){
                         if (result.success){
                             $('#dg').datagrid('reload');    // reload the user data
                         } else {
-                            $.messager.show({    // show error message
-                                title: 'Error',
-                                msg: result.errorMsg
-                            });
+
                         }
                     },'json');
                 }

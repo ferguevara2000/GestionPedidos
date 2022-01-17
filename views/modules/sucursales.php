@@ -25,7 +25,6 @@
                 <th field="dir_suc" width="50">Direccion</th>
                 <th field="tel_suc" width="50">Telèfono</th>
                 <th field="ciu_suc" width="50">Ciudad</th>
-                <th field="cli_suc_per" width="50">Cliente Sucursal</th>
             </tr>
             </thead>
         </table>
@@ -55,9 +54,6 @@
         </div>
         <div style="margin-bottom:10px">
             <input name="ciu_suc" class="easyui-textbox" required="true" label="Ciudad:" style="width:100%">
-        </div>
-        <div style="margin-bottom:10px">
-            <input name="cli_suc_per" class="easyui-textbox" required="true" label="Cliente:" style="width:100%">
         </div>
         </div>
         
@@ -113,7 +109,7 @@
         if (row) {
             $.messager.confirm('Confirmar', 'Esta seguro que desea eliminar la sucursal?', function (r) {
                 if (r) {
-                    $.post('../gestionPedidos/models/sucursales/eliminarSucursal.php', {id_pla: row.id_pla}, function (result) {
+                    $.post('../gestionPedidos/models/sucursales/eliminarSucursal.php', {id_suc: row.id_suc}, function (result) {
                         if (result.success) {
                             $('#dg').datagrid('reload');    // reload the user data
                         } else {

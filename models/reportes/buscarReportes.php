@@ -8,10 +8,12 @@ header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
 include '../conexion.php';
 $cedula = $_POST['cedula'];
 
-$sqlJoin = "SELECT C.id_cli, C.nom_cli, DP.id_ped_per, P.fec_ped, S.dir_suc
-        FROM detalle_ped DP, pedidos P, sucursales S, clientes C 
-        WHERE S.cli_suc_per = '$cedula' AND S.id_suc=P.ped_suc_per
-        AND P.id_ped=DP.id_ped_per";
+
+$sqlJoin = "SELECT P.id_cli_per, C.nom_cli, DP.id_ped_per, P.fec_ped, S.dir_suc
+FROM detalle_ped DP, pedidos P, sucursales S, clientes C 
+WHERE S.id_suc=P.ped_suc_per AND P.id_cli_per='$cedula' AND S.id_suc=P.ped_suc_per
+AND P.id_ped=DP.id_ped_per AND P.id_cli_per=C.id_cli";
+
 $resp = $conn->query($sqlJoin);
 $result = array();
 if ($resp->num_rows > 0) {

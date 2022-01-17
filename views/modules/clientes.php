@@ -109,7 +109,7 @@
     function destroyUser() {
         var row = $('#dg').datagrid('getSelected');
         if (row) {
-            $.messager.confirm('Confirmar', 'Esta seguro que desea eliminar el estudiante?', function (r) {
+            $.messager.confirm('Confirmar', 'Esta seguro que desea eliminar el cliente?', function (r) {
                 if (r) {
                     $.post('../gestionPedidos/models/clientes/eliminarCliente.php', {id_cli: row.id_cli}, function (result) {
                         if (result.success) {

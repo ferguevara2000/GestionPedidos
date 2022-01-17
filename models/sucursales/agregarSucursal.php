@@ -7,13 +7,12 @@ header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
 include '../conexion.php';
 
 $IdSucursal = $_POST['id_suc'];
-$DireccionS = $_POST['dir_pla'];
-$TelefonoS = $_POST['tel_pla'];
+$DireccionS = $_POST['dir_suc'];
+$TelefonoS = $_POST['tel_suc'];
 $CiudadS = $_POST['ciu_suc'];
-$ClienteS = $_POST['cli_suc_per'];
 
 
-$sqlInsert = "INSERT INTO sucursales VALUES('$IdSucursal','$DireccionS','$TelefonoS','$CiudadS','$ClienteS')";
+$sqlInsert = "INSERT INTO sucursales VALUES('$IdSucursal','$DireccionS','$TelefonoS','$CiudadS')";
 
 if ($mysqli->query($sqlInsert) === TRUE)
 {

@@ -10,8 +10,8 @@ include "../conexion.php";
 
 $IdSucursal = $_POST['id_suc'];
 
-$sqlInsert = "DELETE FROM sucursales WHERE id_suc = '$IdSucursales'";
-$result = $mysqli->query($sqlInsert);
+$sqlInsert = "DELETE FROM sucursales WHERE id_suc = '$IdSucursal'";
+$result = $conn->query($sqlInsert);
 
 if ($result){
     echo json_encode(array('success'=>true));
@@ -19,7 +19,7 @@ if ($result){
     echo json_encode("Error".$sqlInsert.$mysqli->error);
 }
 
-$mysqli->close();
+$conn->close();
 
 ?>
 

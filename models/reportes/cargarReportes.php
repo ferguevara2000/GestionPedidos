@@ -6,10 +6,10 @@ header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
 
 include '../conexion.php';
 
-$sqlJoin = "SELECT CS.id_cli_per, C.nom_cli, DP.id_ped_per, P.fec_ped, S.dir_suc
-            FROM detalle_ped DP, pedidos P, sucursales S, clientes C, cliente_suc CS
-            WHERE S.id_suc=CS.id_suc_per AND CS.id_cli_per=C.id_cli AND S.id_suc=P.ped_suc_per
-            AND P.id_ped=DP.id_ped_per";
+$sqlJoin = "SELECT P.id_cli_per, C.nom_cli, DP.id_ped_per, A.nom_art, DP.cat_ped, P.fec_ped, S.dir_suc
+            FROM detalle_ped DP, pedidos P, sucursales S, clientes C, articulos A
+            WHERE S.id_suc=P.ped_suc_per AND P.id_cli_per=C.id_cli AND S.id_suc=P.ped_suc_per
+            AND P.id_ped=DP.id_ped_per AND DP.id_art=A.id_art";
 
 $resp = $conn->query($sqlJoin);
 $result = array();
